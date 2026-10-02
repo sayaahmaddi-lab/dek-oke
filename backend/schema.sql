@@ -44,3 +44,33 @@ CREATE TABLE IF NOT EXISTS pengisian (
   KEY idx_status (status),
   KEY idx_created (created_at)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- Deklarasi Konflik Kepentingan
+CREATE TABLE IF NOT EXISTS deklarasi_konflik (
+  id               INT UNSIGNED NOT NULL AUTO_INCREMENT,
+  nama             VARCHAR(150) NOT NULL DEFAULT '',
+  nip              VARCHAR(50)  NOT NULL DEFAULT '',
+  jabatan          VARCHAR(150) NOT NULL DEFAULT '',
+  unit_kerja       VARCHAR(150) NOT NULL DEFAULT '',
+  perangkat        VARCHAR(150) NOT NULL DEFAULT '',
+  atasan_nama      VARCHAR(150) NOT NULL DEFAULT '',
+  atasan_nip       VARCHAR(50)  NOT NULL DEFAULT '',
+  atasan_jabatan   VARCHAR(150) NOT NULL DEFAULT '',
+  atasan_unit      VARCHAR(150) NOT NULL DEFAULT '',
+  atasan_perangkat VARCHAR(150) NOT NULL DEFAULT '',
+  tanggal_isi      VARCHAR(50)  NOT NULL DEFAULT '',
+  jenis_konflik    LONGTEXT,
+  sumber_konflik   LONGTEXT,
+  uraian           LONGTEXT,
+  pengendalian     LONGTEXT,
+  ttd              LONGTEXT,
+  ttd_nama         VARCHAR(150) NOT NULL DEFAULT '',
+  ttd_nip          VARCHAR(50)  NOT NULL DEFAULT '',
+  status           VARCHAR(20)  NOT NULL DEFAULT 'BARU',
+  catatan_admin    VARCHAR(255) NOT NULL DEFAULT '',
+  created_at       TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (id),
+  KEY idx_nip (nip),
+  KEY idx_status (status),
+  KEY idx_created (created_at)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;

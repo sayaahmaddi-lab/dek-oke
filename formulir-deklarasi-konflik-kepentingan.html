@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Formulir Deklarasi Konflik Kepentingan</title>
+<style>
+  :root { --garis:#333; --tipis:#999; --abu:#eef1f5; --biru:#1f3a5f; }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{background:#e3e7ed;font-family:"Segoe UI",Arial,Helvetica,sans-serif;color:#111;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .toolbar{position:sticky;top:0;z-index:10;display:flex;align-items:center;gap:10px;flex-wrap:wrap;padding:10px 16px;background:#0f2438;color:#fff;box-shadow:0 1px 6px rgba(0,0,0,.25)}
+  .toolbar .brand{font-weight:600;margin-right:auto;font-size:14px}
+  .toolbar button{border:1px solid rgba(255,255,255,.35);background:#1c3a57;color:#fff;padding:7px 14px;border-radius:6px;cursor:pointer;font-size:13px}
+  .toolbar button:hover{background:#2a4e73}
+  .toolbar button.utama{background:#1c7c3c;border-color:#1c7c3c}
+  .toolbar button.utama:hover{background:#229049}
+  .khusus-lihat{display:none}
+  body.mode-lihat .khusus-lihat{display:inline-flex;align-items:center}
+  body.mode-lihat .khusus-isi{display:none!important}
+  #lihatInfo{font-size:12px;background:#132f4c;padding:6px 12px;border-radius:6px}
+  body.mode-lihat input[data-key], body.mode-lihat textarea.sel{cursor:default}
+  body.mode-lihat textarea.sel:focus{background:transparent}
+  body.mode-lihat .pilihan-group{pointer-events:none}
+  body.mode-lihat canvas#ttdCanvas{pointer-events:none;cursor:default}
+  body.mode-lihat .ttd-tools, body.mode-lihat .ttd-pad-hint{display:none!important}
+  body.mode-lihat .ttd .label-tempat{display:block;width:240px;margin:0 0 2px auto;text-align:center}
+  body.mode-lihat .ttd-pad-wrap{text-align:right}
+  body.mode-lihat canvas#ttdCanvas{display:inline-block;vertical-align:bottom;margin:0;border:none;border-radius:0}
+  body.mode-lihat .ttd .nama-nip input{border-bottom:none}
+  body.mode-lihat .ttd .nama-nip input:first-child{text-decoration:underline}
+  .page{max-width:210mm;margin:18px auto 40px;background:#fff;padding:14mm 14mm 16mm;box-shadow:0 2px 14px rgba(0,0,0,.18)}
+  .kop{display:flex;align-items:center;gap:14px;border-bottom:3px double var(--garis);padding-bottom:10px}
+  .kop .logo{flex:0 0 auto;width:64px;height:auto}
+  .kop .teks{flex:1 1 auto;text-align:center}
+  .kop .pemkot{font-size:18px;letter-spacing:1px;margin:0;font-weight:700;text-transform:uppercase}
+  .kop .alamat{font-size:10.5px;margin:3px 0 0;color:#333}
+  .judul{text-align:center;margin:14px 0 10px}
+  .judul h1{font-size:16px;margin:0;text-transform:uppercase;letter-spacing:.5px;text-decoration:underline}
+  .identitas{display:grid;grid-template-columns:1fr 1fr;gap:7px 34px;margin:14px 0 6px}
+  .kolom{display:flex;align-items:baseline;gap:6px;min-width:0}
+  .kolom .lbl{white-space:nowrap;font-weight:600;font-size:13px}
+  .kolom .titik{white-space:nowrap}
+  .kolom .isi{flex:1 1 auto;min-width:0;border-bottom:1px dotted var(--garis)}
+  .kolom input{width:100%;border:none;outline:none;background:transparent;font:inherit;padding:1px 2px}
+  .identitas-head{font-size:13px;font-weight:700;margin:18px 0 8px;text-transform:uppercase;color:var(--biru)}
+  .identitas-head span{font-weight:400;text-transform:none;color:#444;font-style:italic}
+  .bagian{margin-top:18px}
+  .bagian > h2{font-size:14px;margin:0 0 6px;text-transform:uppercase}
+  .sub-judul{font-size:13px;font-weight:700;margin:14px 0 6px;color:#1f3a5f}
+  .pilihan-group{display:flex;flex-wrap:wrap;gap:8px 18px;margin:6px 0 10px}
+  .pilihan-group label{display:inline-flex;align-items:center;gap:6px;font-size:13px;cursor:pointer;background:#f6f8fa;border:1px solid #d7dee6;border-radius:6px;padding:6px 10px}
+  .pilihan-group label:hover{background:#eef3f8}
+  .pilihan-group input{accent-color:#1c7c3c}
+  .lainnya-wrap{display:flex;align-items:baseline;gap:6px;margin:4px 0}
+  .lainnya-wrap .isi{flex:1;border-bottom:1px dotted var(--garis)}
+  .lainnya-wrap input{width:100%;border:none;outline:none;background:transparent;font:inherit;padding:1px 2px}
+  textarea.sel{display:block;width:100%;border:1px solid #d0d7e0;border-radius:6px;outline:none;resize:none;overflow:hidden;background:#fbfdff;font:inherit;padding:8px 10px;min-height:72px;line-height:1.5;font-size:13px}
+  textarea.sel:focus{background:#f0f6ff;border-color:#8bb0d6}
+  body.mode-lihat textarea.sel{border:none;background:transparent;border-radius:0;border-bottom:1px dotted #ccc}
+  .uraian-label{font-size:12.5px;font-weight:600;margin:10px 0 4px}
+  .pernyataan{margin-top:18px;font-size:13px;line-height:1.65;background:#f8fafb;border:1px solid #dde4ec;border-radius:8px;padding:12px 14px}
+  .ttd{margin-top:22px;text-align:right;font-size:13px}
+  .ttd .label-tempat,.ttd .label-ttd,.ttd .spasi{display:none}
+  .ttd .spasi{height:8px}
+  .ttd .nama-nip{display:none}
+  body.mode-lihat .ttd .nama-nip{display:block;width:240px;margin-left:auto}
+  .ttd .nama-nip input{text-align:center;border:none;border-bottom:1px solid var(--garis);outline:none;background:transparent;font:inherit;width:240px;margin-top:4px;padding:1px 2px}
+  .ttd .nama-nip input:first-child{font-weight:600}
+  .ttd-pad-wrap{text-align:center}
+  canvas#ttdCanvas{display:block;margin:0 auto 2px;border:1px solid var(--garis);border-radius:6px;background:#fff;cursor:crosshair;touch-action:none}
+  .ttd-pad-hint{font-size:10.5px;color:#888;margin:0 0 3px}
+  .ttd-tools{display:flex;justify-content:center;gap:8px;margin-bottom:2px}
+  .ttd-tools button{border:1px solid #9aa7b6;background:#f4f6f8;color:#222;font:inherit;font-size:12px;padding:3px 12px;border-radius:5px;cursor:pointer}
+  .ttd-tools button:hover{background:#e6ebf0}
+  .ttd-tools button:disabled{opacity:.45;cursor:default}
+  @media print{.ttd-pad-wrap{text-align:center}.ttd-pad-hint,.ttd-tools{display:none!important}canvas#ttdCanvas{border:none;border-radius:0}}
+  .footer-note{margin-top:20px;font-size:10px;color:#666;text-align:center}
+  @page{size:A4 portrait;margin:12mm}
+  @media print{body{background:#fff}.toolbar{display:none!important}.page{margin:0;padding:0;box-shadow:none;max-width:none}input,textarea.sel{padding:1px 2px}textarea.sel:focus{background:transparent}.bagian,.pernyataan,.ttd{page-break-inside:avoid}}
+  #toast{position:fixed;bottom:18px;left:50%;transform:translateX(-50%) translateY(20px);background:#0f2438;color:#fff;padding:9px 18px;border-radius:6px;font-size:13px;opacity:0;pointer-events:none;transition:.25s;z-index:99}
+  #toast.tampil{opacity:1;transform:translateX(-50%) translateY(0)}
+</style>
+</head>
+<body>
+<div class="toolbar">
+  <span class="brand">Formulir Deklarasi Konflik Kepentingan</span>
+  <button type="button" id="btnKirim" class="utama khusus-isi" onclick="kirimKeServer()">&#9729; Simpan ke Database</button>
+  <button type="button" class="khusus-isi" onclick="bersihkan()">&#128465; Kosongkan</button>
+  <span id="lihatInfo" class="khusus-lihat">Memuat lembar...</span>
+  <button type="button" class="khusus-lihat" onclick="kembaliKeAdmin()">&#11013; Kembali ke Admin</button>
+  <button type="button" class="khusus-lihat utama" onclick="window.print()">&#128424; Cetak / PDF</button>
+</div>
+<div class="page">
+  <header class="kop">
+    <img class="logo" src="assets/logo-aceh-tengah.png" alt="Lambang Kabupaten Aceh Tengah">
+    <div class="teks">
+      <p class="pemkot">Pemerintah Kabupaten Aceh Tengah</p>
+      <p class="alamat">Alamat : ............................... &nbsp;|&nbsp; Telepon : ............ &nbsp;|&nbsp; E-mail : ............</p>
+    </div>
+  </header>
+  <div class="judul"><h1>Formulir Deklarasi Konflik Kepentingan</h1></div>
+  <div class="identitas-head">A. Identitas <span>— Saya yang bertandatangan di bawah ini,</span></div>
+  <div class="identitas">
+    <div class="kolom"><span class="lbl">Nama</span><span class="titik">:</span><span class="isi"><input type="text" data-key="nama" placeholder="..."></span></div>
+    <div class="kolom"><span class="lbl">NIP</span><span class="titik">:</span><span class="isi"><input type="text" data-key="nip" placeholder="..."></span></div>
+    <div class="kolom"><span class="lbl">Jabatan</span><span class="titik">:</span><span class="isi"><input type="text" data-key="jabatan" placeholder="..."></span></div>
+    <div class="kolom"><span class="lbl">Unit Kerja</span><span class="titik">:</span><span class="isi"><input type="text" data-key="unit" placeholder="..."></span></div>
+    <div class="kolom" style="grid-column:1 / -1"><span class="lbl">Perangkat Daerah</span><span class="titik">:</span><span class="isi"><input type="text" data-key="perangkat" placeholder="..."></span></div>
+  </div>
+  <div class="identitas-head" style="margin-top:14px">Melakukan deklarasi Konflik Kepentingan kepada:</div>
+  <div class="identitas">
+    <div class="kolom"><span class="lbl">Nama Atasan</span><span class="titik">:</span><span class="isi"><input type="text" data-key="atasan_nama" placeholder="..."></span></div>
+    <div class="kolom"><span class="lbl">NIP</span><span class="titik">:</span><span class="isi"><input type="text" data-key="atasan_nip" placeholder="..."></span></div>
+    <div class="kolom"><span class="lbl">Jabatan</span><span class="titik">:</span><span class="isi"><input type="text" data-key="atasan_jabatan" placeholder="..."></span></div>
+    <div class="kolom"><span class="lbl">Unit Kerja</span><span class="titik">:</span><span class="isi"><input type="text" data-key="atasan_unit" placeholder="..."></span></div>
+    <div class="kolom" style="grid-column:1 / -1"><span class="lbl">Perangkat Daerah</span><span class="titik">:</span><span class="isi"><input type="text" data-key="atasan_perangkat" placeholder="..."></span></div>
+    <div class="kolom"><span class="lbl">Tanggal Deklarasi</span><span class="titik">:</span><span class="isi"><input type="text" data-key="tanggal" placeholder="........-........-........"></span></div>
+  </div>
+  <section class="bagian">
+    <h2>B. Uraian Konflik Kepentingan</h2>
+    <div class="sub-judul">1. Jenis Konflik Kepentingan:</div>
+    <div class="pilihan-group">
+      <label><input type="checkbox" data-key="jenis_aktual"> Konflik Kepentingan Aktual</label>
+      <label><input type="checkbox" data-key="jenis_potensial"> Konflik Kepentingan Potensial</label>
+    </div>
+    <div class="sub-judul">2. Sumber Konflik Kepentingan:</div>
+    <div class="pilihan-group">
+      <label><input type="checkbox" data-key="sumber_bisnis"> Kepentingan bisnis/finansial</label>
+      <label><input type="checkbox" data-key="sumber_keluarga"> Hubungan keluarga/kerabat</label>
+      <label><input type="checkbox" data-key="sumber_afiliasi"> Hubungan afiliasi</label>
+      <label><input type="checkbox" data-key="sumber_pekerjaan_luar"> Pekerjaan di luar pekerjaan pokok</label>
+      <label><input type="checkbox" data-key="sumber_rangkap"> Rangkap jabatan</label>
+      <label><input type="checkbox" data-key="sumber_jabatan_sebelum"> Jabatan/pekerjaan sebelumnya</label>
+      <label><input type="checkbox" data-key="sumber_gratifikasi"> Hadiah/gratifikasi</label>
+      <label style="flex:1 1 100%"><input type="checkbox" data-key="sumber_lainnya"> Lainnya:</label>
+    </div>
+    <div class="lainnya-wrap"><span class="isi"><input type="text" data-key="sumber_lainnya_isi" placeholder="Sebutkan..."></span></div>
+    <p style="margin:12px 0 6px;font-size:13px">Bahwa saya berada pada kondisi Konflik Kepentingan dengan penjelasan sebagai berikut:</p>
+    <div class="uraian-label">1. Penjelasan dan uraian mengenai tugas pokok, fungsi atau kewenangan serta keputusan dan/atau tindakan yang dihadapi:</div>
+    <textarea class="sel" data-key="uraian_tugas" rows="3" placeholder="Uraikan..."></textarea>
+    <div class="uraian-label">2. Penjelasan dan uraian mengenai sumber Konflik Kepentingan yang dimiliki:</div>
+    <textarea class="sel" data-key="uraian_sumber" rows="3" placeholder="Uraikan..."></textarea>
+    <div class="uraian-label">3. Penjelasan dan uraian kaitan antara sumber Konflik Kepentingan yang dimiliki dengan pengambilan keputusan dan/atau tindakan administrasi pemerintahan yang akan dilakukan:</div>
+    <textarea class="sel" data-key="uraian_kaitan" rows="3" placeholder="Uraikan..."></textarea>
+    <div class="uraian-label">4. Pengendalian Konflik Kepentingan yang dapat disarankan kepada Atasan Pejabat (opsional):</div>
+    <div class="pilihan-group">
+      <label><input type="checkbox" data-key="kendali_pengalihan"> Pengalihan kewenangan</label>
+      <label><input type="checkbox" data-key="kendali_penggantian"> Penggantian pejabat pelaksana</label>
+      <label><input type="checkbox" data-key="kendali_pembatasan_akses"> Pembatasan akses informasi</label>
+      <label><input type="checkbox" data-key="kendali_pembatasan_suara"> Pembatasan hak suara</label>
+      <label><input type="checkbox" data-key="kendali_pelepasan"> Pelepasan kepentingan pribadi</label>
+      <label><input type="checkbox" data-key="kendali_perubahan_tugas"> Perubahan penugasan</label>
+      <label><input type="checkbox" data-key="kendali_tidak_ikut"> Tidak ikut dalam proses pengambilan keputusan</label>
+      <label><input type="checkbox" data-key="kendali_lain"> Bentuk lain:</label>
+    </div>
+    <div class="lainnya-wrap"><span class="isi"><input type="text" data-key="kendali_lain_isi" placeholder="Sebutkan..."></span></div>
+  </section>
+  <section class="pernyataan">
+    Saya menyatakan bahwa deklarasi Konflik Kepentingan yang saya nyatakan adalah benar sejauh pengetahuan saya serta sebagai bentuk tanggung jawab saya untuk melakukan langkah pengelolaan sesuai dengan peraturan pengelolaan Konflik Kepentingan.
+  </section>
+  <div class="ttd">
+    <p class="label-tempat">(tempat, tanggal, bulan, tahun)</p>
+    <p class="label-ttd">Ttd.</p>
+    <div class="spasi"></div>
+    <div class="ttd-pad-wrap">
+      <p class="ttd-pad-hint">Tanda tangan digital — gambar di dalam kotak menggunakan mouse / sentuhan.</p>
+      <canvas id="ttdCanvas" width="520" height="180"></canvas>
+      <div class="ttd-tools">
+        <button type="button" id="btnBersihTtd">Hapus Tanda Tangan</button>
+        <button type="button" id="btnBatalTtd" disabled>Undo</button>
+      </div>
+    </div>
+    <div class="nama-nip">
+      <input type="text" data-key="ttd_nama" placeholder="(nama lengkap)"><br>
+      <input type="text" data-key="ttd_nip" placeholder="(NIP)">
+    </div>
+  </div>
+  <p style="text-align:center;font-size:11px;margin:10px 0 0">Yang Melakukan Deklarasi</p>
+  <p class="footer-note">Formulir Deklarasi Konflik Kepentingan — Pemerintah Kabupaten Aceh Tengah</p>
+</div>
+<div id="toast"></div>
+<script>
+(function(){
+  var KUNCI='dek-oke-deklarasi'; var KUNCI_TTD='dek-oke-deklarasi-ttd'; var RASIO=2;
+  var canvas=document.getElementById('ttdCanvas'); var ctx=canvas.getContext('2d');
+  var menggambar=false, punyaIsi=false, tumpukan=[], MAX=20;
+  function setT(){ctx.setTransform(RASIO,0,0,RASIO,0,0);ctx.lineWidth=2.4;ctx.lineCap='round';ctx.lineJoin='round';ctx.strokeStyle='#0a0a0a'}
+  function resetT(){ctx.setTransform(1,0,0,1,0,0)}
+  function clearCanvas(){resetT();ctx.clearRect(0,0,canvas.width,canvas.height);setT()}
+  function renderTtd(url,done){var img=new Image();img.onload=function(){resetT();ctx.clearRect(0,0,canvas.width,canvas.height);ctx.drawImage(img,0,0,canvas.width,canvas.height);setT();if(done)done()};img.src=url}
+  function setupCanvas(){var w=(canvas.parentElement.clientWidth||520);w=Math.floor(Math.min(w,520)/2);var h=180;canvas.width=w*RASIO;canvas.height=h*RASIO;canvas.style.width=w+'px';canvas.style.height=h+'px';setT()}
+  function pos(e){var r=canvas.getBoundingClientRect();var x,y;if(e.touches&&e.touches.length){x=e.touches[0].clientX-r.left;y=e.touches[0].clientY-r.top}else{x=e.clientX-r.left;y=e.clientY-r.top}return{x:x,y:y}}
+  function mulai(e){e.preventDefault();var p=pos(e);tumpukan.push(canvas.toDataURL());if(tumpukan.length>MAX)tumpukan.shift();menggambar=true;punyaIsi=true;ctx.beginPath();ctx.moveTo(p.x,p.y);ctx.lineTo(p.x+0.01,p.y+0.01);ctx.stroke();upd()}
+  function lanjut(e){if(!menggambar) return;e.preventDefault();var p=pos(e);ctx.lineTo(p.x,p.y);ctx.stroke()}
+  function selesai(){if(menggambar){menggambar=false;simpanTtd();upd()}}
+  function hapus(){tumpukan=[];punyaIsi=false;clearCanvas();try{localStorage.removeItem(KUNCI_TTD)}catch(e){}upd()}
+  function undo(){if(!tumpukan.length) return;var url=tumpukan.pop();if(!url){clearCanvas();upd();return}punyaIsi=true;renderTtd(url,function(){simpanTtd();upd()})}
+  function upd(){document.getElementById('btnBatalTtd').disabled=tumpukan.length===0;document.getElementById('btnBersihTtd').disabled=!punyaIsi}
+  function simpanTtd(){try{localStorage.setItem(KUNCI_TTD,canvas.toDataURL())}catch(e){}}
+  function muatTtd(){var u=null;try{u=localStorage.getItem(KUNCI_TTD)}catch(e){}if(u){punyaIsi=true;renderTtd(u,upd)}else upd()}
+  canvas.addEventListener('mousedown',mulai);canvas.addEventListener('mousemove',lanjut);window.addEventListener('mouseup',selesai);
+  canvas.addEventListener('touchstart',mulai,{passive:false});canvas.addEventListener('touchmove',lanjut,{passive:false});canvas.addEventListener('touchend',selesai);
+  document.getElementById('btnBersihTtd').addEventListener('click',hapus);document.getElementById('btnBatalTtd').addEventListener('click',undo);
+  function toast(t){var el=document.getElementById('toast');el.textContent=t;el.classList.add('tampil');clearTimeout(el._t);el._t=setTimeout(function(){el.classList.remove('tampil')},2100)}
+  function autosize(ta){ta.style.height='auto';ta.style.height=(ta.scrollHeight+2)+'px'}
+  function autosizeSemua(){document.querySelectorAll('textarea.sel').forEach(autosize)}
+  function kumpulkan(){var d={};document.querySelectorAll('[data-key]').forEach(function(el){var k=el.dataset.key;if(el.type==='checkbox'||el.type==='radio')d[k]=el.checked;else d[k]=el.value});return d}
+  function simpan(){try{localStorage.setItem(KUNCI,JSON.stringify(kumpulkan()));}catch(e){}}
+  function muat(){var d={};try{d=JSON.parse(localStorage.getItem(KUNCI)||'{}')}catch(e){}document.querySelectorAll('[data-key]').forEach(function(el){var v=d[el.dataset.key];if(v===undefined) return;if(el.type==='checkbox'||el.type==='radio')el.checked=!!v;else el.value=v});autosizeSemua()}
+  window.bersihkan=function(){if(!confirm('Kosongkan seluruh isian deklarasi?')) return;document.querySelectorAll('[data-key]').forEach(function(el){if(el.type==='checkbox'||el.type==='radio')el.checked=false;else el.value=''});try{localStorage.removeItem(KUNCI)}catch(e){}hapus();autosizeSemua();toast('Formulir dikosongkan.')}
+  var IS_LOCAL=location.hostname==='localhost'||location.hostname==='127.0.0.1'||location.hostname==='';
+  var URL_SERVER=IS_LOCAL?'backend/deklarasi-simpan.php':'/api/deklarasi-simpan';
+  var URL_FALLBACK=IS_LOCAL?'/api/deklarasi-simpan':'backend/deklarasi-simpan.php';
+  function susunPayload(){
+    var f=kumpulkan();
+    return {
+      nama:f.nama||'', nip:f.nip||'', jabatan:f.jabatan||'', unit_kerja:f.unit||'', perangkat:f.perangkat||'',
+      atasan_nama:f.atasan_nama||'', atasan_nip:f.atasan_nip||'', atasan_jabatan:f.atasan_jabatan||'', atasan_unit:f.atasan_unit||'', atasan_perangkat:f.atasan_perangkat||'',
+      tanggal_isi:f.tanggal||'',
+      jenis_konflik: JSON.stringify({aktual:!!f.jenis_aktual, potensial:!!f.jenis_potensial}),
+      sumber_konflik: JSON.stringify({bisnis:!!f.sumber_bisnis, keluarga:!!f.sumber_keluarga, afiliasi:!!f.sumber_afiliasi, pekerjaan_luar:!!f.sumber_pekerjaan_luar, rangkap:!!f.sumber_rangkap, jabatan_sebelum:!!f.sumber_jabatan_sebelum, gratifikasi:!!f.sumber_gratifikasi, lainnya:!!f.sumber_lainnya, lainnya_isi:f.sumber_lainnya_isi||''}),
+      uraian: JSON.stringify({tugas:f.uraian_tugas||'', sumber:f.uraian_sumber||'', kaitan:f.uraian_kaitan||''}),
+      pengendalian: JSON.stringify({pengalihan:!!f.kendali_pengalihan, penggantian:!!f.kendali_penggantian, pembatasan_akses:!!f.kendali_pembatasan_akses, pembatasan_suara:!!f.kendali_pembatasan_suara, pelepasan:!!f.kendali_pelepasan, perubahan_tugas:!!f.kendali_perubahan_tugas, tidak_ikut:!!f.kendali_tidak_ikut, lain:!!f.kendali_lain, lain_isi:f.kendali_lain_isi||''}),
+      ttd:(typeof punyaIsi!=='undefined'&&punyaIsi)?canvas.toDataURL('image/png'):'',
+      ttd_nama:f.ttd_nama||f.nama||'', ttd_nip:f.ttd_nip||f.nip||''
+    }
+  }
+  window.kirimKeServer=async function(){
+    var btn=document.getElementById('btnKirim'); var payload=susunPayload();
+    if(!payload.nama||!payload.nip){toast('Gagal: Nama dan NIP wajib diisi.');return}
+    var txt=btn.textContent; btn.disabled=true; btn.textContent='Mengirim...';
+    async function coba(url){var r=await fetch(url,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)});var j;try{j=await r.json()}catch(e){j={ok:false,message:'Respons bukan JSON ('+r.status+')'}}return{resp:r,hasil:j}}
+    try{
+      var r=await coba(URL_SERVER);
+      if(r.resp.status===404&&URL_FALLBACK!==URL_SERVER) r=await coba(URL_FALLBACK);
+      if(r.hasil.ok) toast('Tersimpan (ID #'+r.hasil.id+').');
+      else toast('Gagal menyimpan: '+(r.hasil.message||r.resp.status));
+    }catch(e){toast('Tidak dapat terhubung ke server: '+(e.message||''))}
+    finally{btn.disabled=false;btn.textContent=txt}
+  }
+  var PARAMS=new URLSearchParams(location.search); var LIHAT_ID=PARAMS.get('lihat'); var MODE_LIHAT=LIHAT_ID!==null&&String(LIHAT_ID).trim()!=='';
+  function bangunFlat(row){
+    var flat={nama:row.nama||'',nip:row.nip||'',jabatan:row.jabatan||'',unit:row.unit_kerja||'',perangkat:row.perangkat||'',atasan_nama:row.atasan_nama||'',atasan_nip:row.atasan_nip||'',atasan_jabatan:row.atasan_jabatan||'',atasan_unit:row.atasan_unit||'',atasan_perangkat:row.atasan_perangkat||'',tanggal:row.tanggal_isi||'',ttd_nama:row.ttd_nama||'',ttd_nip:row.ttd_nip||''};
+    try{var j=JSON.parse(row.jenis_konflik||'{}');flat.jenis_aktual=!!j.aktual;flat.jenis_potensial=!!j.potensial}catch(e){}
+    try{var s=JSON.parse(row.sumber_konflik||'{}');flat.sumber_bisnis=!!s.bisnis;flat.sumber_keluarga=!!s.keluarga;flat.sumber_afiliasi=!!s.afiliasi;flat.sumber_pekerjaan_luar=!!s.pekerjaan_luar;flat.sumber_rangkap=!!s.rangkap;flat.sumber_jabatan_sebelum=!!s.jabatan_sebelum;flat.sumber_gratifikasi=!!s.gratifikasi;flat.sumber_lainnya=!!s.lainnya;flat.sumber_lainnya_isi=s.lainnya_isi||''}catch(e){}
+    try{var u=JSON.parse(row.uraian||'{}');flat.uraian_tugas=u.tugas||'';flat.uraian_sumber=u.sumber||'';flat.uraian_kaitan=u.kaitan||''}catch(e){}
+    try{var k=JSON.parse(row.pengendalian||'{}');flat.kendali_pengalihan=!!k.pengalihan;flat.kendali_penggantian=!!k.penggantian;flat.kendali_pembatasan_akses=!!k.pembatasan_akses;flat.kendali_pembatasan_suara=!!k.pembatasan_suara;flat.kendali_pelepasan=!!k.pelepasan;flat.kendali_perubahan_tugas=!!k.perubahan_tugas;flat.kendali_tidak_ikut=!!k.tidak_ikut;flat.kendali_lain=!!k.lain;flat.kendali_lain_isi=k.lain_isi||''}catch(e){}
+    return flat;
+  }
+  function terapkanFlat(d){document.querySelectorAll('[data-key]').forEach(function(el){var v=d[el.dataset.key];if(v===undefined) return;if(el.type==='checkbox'||el.type==='radio')el.checked=!!v;else el.value=v})}
+  window.kembaliKeAdmin=function(){window.close();setTimeout(function(){if(!window.closed) history.back()},120)}
+  function pangkas(){if(!punyaIsi) return;var w=canvas.width,h=canvas.height,data;try{data=ctx.getImageData(0,0,w,h).data}catch(e){return}var minX=w,maxX=-1,minY=h,maxY=-1;for(var y=0;y<h;y+=2)for(var x=0;x<w;x+=2)if(data[(y*w+x)*4+3]>10){if(x<minX)minX=x;if(x>maxX)maxX=x;if(y<minY)minY=y;if(y>maxY)maxY=y}if(maxX<0) return;var pad=16;minX=Math.max(0,minX-pad);minY=Math.max(0,minY-pad);maxX=Math.min(w,maxX+pad);maxY=Math.min(h,maxY+pad);var cw=maxX-minX,ch=maxY-minY;var c=document.createElement('canvas');c.width=cw;c.height=ch;c.getContext('2d').drawImage(canvas,minX,minY,cw,ch,0,0,cw,ch);resetT();canvas.width=cw;canvas.height=ch;ctx.drawImage(c,0,0);setT();canvas.style.width=(cw/RASIO)+'px';canvas.style.height=(ch/RASIO)+'px'}
+  function isiTempat(row){var el=document.querySelector('.ttd .label-tempat');if(!el) return;var t=(row.tanggal_isi||'').trim();if(!t){el.textContent='Takengon, ........................';return}el.textContent=/,/.test(t)?t:'Takengon, '+t}
+  async function initLihat(){
+    document.body.classList.add('mode-lihat');
+    document.querySelectorAll('input[data-key], textarea.sel').forEach(function(el){el.readOnly=true;if(el.type==='checkbox'||el.type==='radio')el.tabIndex=-1});
+    var token='';try{token=localStorage.getItem('sikonkep_token')||''}catch(e){}
+    if(!token){toast('Halaman ini khusus admin. Silakan login.');setTimeout(function(){location.href='login.html'},1000);return}
+    try{
+      var r=await fetch('/api/deklarasi-admin?action=get&id='+encodeURIComponent(LIHAT_ID),{headers:{Authorization:'Bearer '+token}});
+      var j=await r.json();if(!j.ok) throw new Error(j.message||('HTTP '+r.status));
+      var row=j.data; terapkanFlat(bangunFlat(row)); isiTempat(row);
+      var a=document.querySelector('input[data-key="nama"]'), b=document.querySelector('input[data-key="ttd_nama"]');
+      if(a&&b&&!b.value.trim()) b.value=a.value.trim();
+      var nipEl=document.querySelector('input[data-key="ttd_nip"]'); if(nipEl&&nipEl.value&&!/^NIP\./i.test(nipEl.value.trim())) nipEl.value='NIP. '+nipEl.value;
+      var namaEl=document.querySelector('input[data-key="ttd_nama"]'); if(namaEl&&namaEl.value.trim()&&namaEl.value.trim().charAt(0)!=='(') namaEl.value='( '+namaEl.value.trim()+' )';
+      if(row.ttd&&String(row.ttd).indexOf('data:image/')===0){punyaIsi=true;renderTtd(row.ttd,pangkas)}else{var w=document.querySelector('.ttd-pad-wrap');if(w) w.style.display='none'}
+      var info='Deklarasi #'+row.id+' | Status: '+(row.status||'BARU'); if(row.created_at) try{info+=' | Dikirim: '+new Date(row.created_at).toLocaleString('id-ID')}catch(e){}
+      document.getElementById('lihatInfo').textContent=info; document.title='Deklarasi #'+row.id+' - '+(row.nama||'')+' - Dek-Oke';
+    }catch(e){toast('Gagal memuat lembar: '+e.message); if(/401|token|login|sesi/i.test(String(e.message))) setTimeout(function(){location.href='login.html'},800)}
+    autosizeSemua();
+  }
+  setupCanvas();
+  if(MODE_LIHAT) initLihat();
+  else { muat(); muatTtd(); autosizeSemua();
+    document.querySelectorAll('textarea.sel').forEach(function(ta){ta.addEventListener('input',function(){autosize(ta);simpan()})});
+    document.querySelectorAll('[data-key]').forEach(function(el){if(el.tagName==='INPUT'){el.addEventListener('input',simpan);el.addEventListener('change',simpan)}});
+  }
+  window.addEventListener('beforeprint',autosizeSemua);
+})();
+</script>
+</body>
+</html>

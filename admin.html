@@ -53,7 +53,7 @@
   <div class="bar">
     <h1>Admin — SiKonKep</h1>
     <span id="stat" class="stat">Memuat…</span>
-    <a class="btn ghost" href="formulir-daftar-kepentingan-pribadi.html" target="_blank">Formulir</a>
+    <a class="btn ghost" id="btnFormulir" href="formulir-daftar-kepentingan-pribadi.html" target="_blank">Formulir</a>
     <button class="btn" id="btnExport">⬇ Export CSV</button>
     <button class="btn ghost" id="btnLogout">Keluar</button>
   </div>
@@ -63,7 +63,11 @@
       <div class="card"><b id="cBaru">–</b><span>Berstatus BARU</span></div>
       <div class="card"><b id="cUser">–</b><span>Login sebagai</span></div>
     </div>
-    <div class="toolbar">
+      <div style="display:flex;gap:8px;margin-bottom:12px">
+    <button class="btn" id="tabPengisian" style="background:var(--hijau)" onclick="switchTab('pengisian')">📋 Daftar Kepentingan Pribadi</button>
+    <button class="btn" id="tabDeklarasi" style="background:#64748b" onclick="switchTab('deklarasi')">📝 Deklarasi Konflik Kepentingan</button>
+  </div>
+  <div class="toolbar">
       <input id="q" type="search" placeholder="Cari nama / NIP / jabatan…" style="min-width:220px">
       <select id="fStatus"><option value="">Semua status</option><option>BARU</option><option>DIPROSES</option><option>SELESAI</option><option>DITOLAK</option></select>
       <button class="btn" id="btnRefresh">↻ Muat ulang</button>
@@ -95,14 +99,21 @@
 
   <div id="toast" class="toast"></div>
 <script>
+const API = {
+  pengisian:{list:'/api/admin?action=list', lembar:id=>'formulir-daftar-kepentingan-pribadi.html?lihat='+encodeURIComponent(id), status:'/api/admin?action=status', export:'/api/admin?action=export'},
+  deklarasi:{list:'/api/deklarasi-admin?action=list', lembar:id=>'formulir-deklarasi-konflik-kepentingan.html?lihat='+encodeURIComponent(id), status:'/api/deklarasi-admin?action=status', export:'/api/deklarasi-admin?action=export'}
+};
+let TAB='pengisian';
 const API_LIST = '/api/admin?action=list';
-const API_LEMBAR = id => 'formulir-daftar-kepentingan-pribadi.html?lihat=' + encodeURIComponent(id);
+const API_LEMBAR = id => API[TAB].lembar(id);
 const API_STATUS = '/api/admin?action=status';
 const API_EXPORT = '/api/admin?action=export';
 const API_ME = '/api/admin?action=me';
 
 let DATA = [];
 let modalId = null;
+function switchTab(t){TAB=t;document.getElementById('tabPengisian').style.background=t==='pengisian'?'var(--hijau)':'#64748b';document.getElementById('tabDeklarasi').style.background=t==='deklarasi'?'var(--hijau)':'#64748b';document.getElementById('btnFormulir').href=TAB==='deklarasi'?'formulir-deklarasi-konflik-kepentingan.html':'formulir-daftar-kepentingan-pribadi.html';muat();}
+function curAPI(k){return API[TAB][k];}
 
 function getToken(){ return localStorage.getItem('sikonkep_token') || ''; }
 function authHeader(){ return { 'Authorization':'Bearer '+getToken(), 'Content-Type':'application/json' }; }
@@ -146,7 +157,7 @@ async function muat(){
   if(!await cekAuth()) return;
   document.getElementById('stat').textContent='Memuat…';
   try{
-    const r=await fetch(API_LIST, { headers:{Authorization:'Bearer '+getToken()}});
+    const r=await fetch(curAPI('list'), { headers:{Authorization:'Bearer '+getToken()}});
     const j=await r.json();
     if(!r.ok || !j.ok) throw new Error(j.message||('HTTP '+r.status));
     DATA=j.data||[];
@@ -167,7 +178,7 @@ function render(){
   let rows=DATA.filter(r=>{
     if(fs && r.status!==fs) return false;
     if(q){
-      const hay=(r.nama+' '+r.nip+' '+r.jabatan+' '+r.perangkat+' '+r.unit_kerja).toLowerCase();
+      const hay=(r.nama+' '+r.nip+' '+r.jabatan+' '+(r.perangkat||'')+' '+(r.unit_kerja||'')+' '+(r.atasan_nama||'')).toLowerCase();
       if(!hay.includes(q)) return false;
     }
     return true;
@@ -176,6 +187,29 @@ function render(){
     document.getElementById('tabelWrap').innerHTML=`<div class="kosong">Tidak ada data yang cocok.</div>`;
     return;
   }
+  if(TAB==='deklarasi'){
+    let html=`<table><thead><tr>
+      <th>ID</th><th>Nama / NIP</th><th>Jabatan</th><th>Perangkat / Unit</th><th>Atasan</th><th>Tgl</th><th>Jenis</th><th>Sumber</th><th>Ttd</th><th>Status</th><th>Dikirim</th><th>Aksi</th>
+    </tr></thead><tbody>`;
+    for(const r of rows){
+      let jenis='-'; try{const j=JSON.parse(r.jenis_konflik||'{}'); const ar=[]; if(j.aktual) ar.push('Aktual'); if(j.potensial) ar.push('Potensial'); if(ar.length) jenis=ar.join(', ')}catch{}
+      let sumber='-'; try{const s=JSON.parse(r.sumber_konflik||'{}'); let c=0; ['bisnis','keluarga','afiliasi','pekerjaan_luar','rangkap','jabatan_sebelum','gratifikasi','lainnya'].forEach(k=>{if(s[k]) c++}); if(s.lainnya_isi) sumber=c+' + lain'; else sumber=c?c+' item':'-'}catch{}
+      html+=`<tr>
+        <td>${r.id}</td>
+        <td><b>${esc(r.nama)}</b><br><span style="color:#666">${esc(r.nip)}</span></td>
+        <td>${esc(r.jabatan||'-')}</td>
+        <td>${esc(r.perangkat||'-')}${r.unit_kerja?'<br><span style="color:#666">'+esc(r.unit_kerja)+'</span>':''}</td>
+        <td>${esc(r.atasan_nama||'-')}${r.atasan_jabatan?'<br><span style="color:#666">'+esc(r.atasan_jabatan)+'</span>':''}</td>
+        <td>${esc(r.tanggal_isi||'-')}</td>
+        <td>${esc(jenis)}</td><td>${esc(sumber)}</td>
+        <td class="jempol">${r.ttd && r.ttd.startsWith('data:image/') ? `<img src="${esc(r.ttd)}" alt="ttd">` : '<span style="color:#aaa">-</span>'}</td>
+        <td>${badge(r.status)}<br><small style="color:#667">${esc(r.catatan_admin||'')}</small></td>
+        <td>${fmtTanggal(r.created_at)}</td>
+        <td style="white-space:nowrap"><button class="btn" style="padding:6px 10px" onclick="buka(${r.id})">📄 Lihat</button> <button class="btn" style="padding:6px 10px;background:#64748b" onclick="proses(${r.id})">⚙ Status</button></td>
+      </tr>`;
+    }
+    html+='</tbody></table>'; document.getElementById('tabelWrap').innerHTML=html; return;
+  }
   let html=`<table><thead><tr>
     <th>ID</th><th>Nama / NIP</th><th>Jabatan</th><th>Perangkat / Unit</th><th>Tgl Isi</th>
     <th>A</th><th>B</th><th>C</th><th>D</th><th>E (Ya)</th><th>F</th><th>Ttd</th><th>Status</th><th>Dikirim</th><th>Aksi</th>
@@ -183,13 +217,7 @@ function render(){
   for(const r of rows){
     let eYa=0; try{ const e=JSON.parse(r.bagian_e||'{}'); [1,2,3].forEach(n=>{ if(e['e'+n+'_ya']) eYa++; }); }catch{}
     let fYa='-'; try{ const f=JSON.parse(r.bagian_f||'{}'); fYa=f.ya?'Ya': f.tidak?'Tidak':'-'; }catch{}
-    const ada = (s)=> {
-      try{
-        const o=JSON.parse(s||'{}'); let n=0;
-        for(const k in o){ if(o[k]&&String(o[k]).trim()!=='') n++; }
-        return n||'-';
-      }catch{return '-';}
-    };
+    const ada = (s)=> { try{ const o=JSON.parse(s||'{}'); let n=0; for(const k in o){ if(o[k]&&String(o[k]).trim()!=='') n++; } return n||'-'; }catch{return '-';} };
     html+=`<tr>
       <td>${r.id}</td>
       <td><b>${esc(r.nama)}</b><br><span style="color:#666">${esc(r.nip)}</span></td>
@@ -201,10 +229,7 @@ function render(){
       <td class="jempol">${r.ttd && r.ttd.startsWith('data:image/') ? `<img src="${esc(r.ttd)}" alt="ttd">` : '<span style="color:#aaa">-</span>'}</td>
       <td>${badge(r.status)}<br><small style="color:#667">${esc(r.catatan_admin||'')}</small></td>
       <td>${fmtTanggal(r.created_at)}</td>
-      <td style="white-space:nowrap">
-        <button class="btn" style="padding:6px 10px" title="Buka lembar formulir persis seperti aslinya" onclick="buka(${r.id})">📄 Lihat</button>
-        <button class="btn" style="padding:6px 10px;background:#64748b" title="Ubah status & catatan" onclick="proses(${r.id})">⚙ Status</button>
-      </td>
+      <td style="white-space:nowrap"><button class="btn" style="padding:6px 10px" onclick="buka(${r.id})">📄 Lihat</button> <button class="btn" style="padding:6px 10px;background:#64748b" onclick="proses(${r.id})">⚙ Status</button></td>
     </tr>`;
   }
   html+='</tbody></table>';
@@ -215,7 +240,7 @@ function esc(s){ return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;')
 // Tombol "Lihat": buka lembar formulir persis seperti aslinya (read-only,
 // lengkap dengan tanda tangan) di tab baru — datanya diambil dari database.
 function buka(id){
-  window.open(API_LEMBAR(id), '_blank');
+  window.open(curAPI('lembar')(id), '_blank');
 }
 
 // Tombol "Status": panel ringkas untuk mengubah status & catatan admin.
@@ -232,7 +257,7 @@ function proses(id){
     <div><b>Dikirim</b><br>${fmtTanggal(d.created_at)}</div>
     <div><b>Tanda Tangan</b><br>${d.ttd && String(d.ttd).startsWith('data:image/') ? 'Ada ✔' : '-'}</div>
     <div class="full" style="margin-top:2px">
-      <a href="${API_LEMBAR(d.id)}" target="_blank" style="color:var(--biru2);font-weight:600">📄 Buka lembar formulir lengkap (dengan tanda tangan) ↗</a>
+      <a href="${curAPI('lembar')(d.id)}" target="_blank" style="color:var(--biru2);font-weight:600">📄 Buka lembar formulir lengkap (dengan tanda tangan) ↗</a>
     </div>`;
   document.getElementById('mStatus').value = d.status;
   document.getElementById('mCatatan').value = d.catatan_admin || '';
@@ -247,7 +272,7 @@ document.getElementById('btnSimpanStatus').addEventListener('click', async ()=>{
   const btn=document.getElementById('btnSimpanStatus');
   btn.disabled=true; btn.textContent='Menyimpan…';
   try{
-    const r=await fetch(API_STATUS, { method:'POST', headers:authHeader(), body:JSON.stringify({id:modalId, status, catatan_admin:catatan})});
+    const r=await fetch(curAPI('status'), { method:'POST', headers:authHeader(), body:JSON.stringify({id:modalId, status, catatan_admin:catatan})});
     const j=await r.json();
     if(!j.ok) throw new Error(j.message);
     toast('Status diperbarui');
@@ -261,11 +286,11 @@ document.getElementById('btnExport').addEventListener('click', async ()=>{
   const t=getToken();
   // trigger download via fetch blob
   try{
-    const r=await fetch(API_EXPORT, { headers:{Authorization:'Bearer '+t}});
+    const r=await fetch(curAPI('export'), { headers:{Authorization:'Bearer '+t}});
     if(!r.ok){ const j=await r.json().catch(()=>({message:r.statusText})); throw new Error(j.message||r.statusText); }
     const blob=await r.blob();
     const url=URL.createObjectURL(blob);
-    const a=document.createElement('a'); a.href=url; a.download='rekap-sikonkep.csv'; a.click();
+    const a=document.createElement('a'); a.href=url; a.download=TAB==='deklarasi'?'rekap-deklarasi-konflik.csv':'rekap-sikonkep.csv'; a.click();
     URL.revokeObjectURL(url);
   }catch(e){ toast('Export gagal: '+e.message); }
 });
