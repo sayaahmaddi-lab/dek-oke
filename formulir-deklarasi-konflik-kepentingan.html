@@ -250,7 +250,7 @@
   
   var LAST_ID=null;
   function showReceipt(id){LAST_ID=id; document.getElementById('receipt').classList.add('show'); try{localStorage.setItem('dekoke_last_id_'+location.pathname, String(id))}catch(e){} }
-  function tutupReceipt(){document.getElementById('receipt').classList.remove('show')}
+  function tutupReceipt(){document.getElementById('receipt').classList.remove('show'); location.href='index.html';}
 
   window.kirimKeServer=async function(){
     var btn=document.getElementById('btnKirim'); var payload=susunPayload();
