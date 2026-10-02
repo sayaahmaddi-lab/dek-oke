@@ -6,7 +6,7 @@
 //     php backend/tools/hash_pass.php "password-anda"
 //
 //   Atau buka lewat browser:
-//     http://localhost/sikonkep/backend/tools/hash_pass.php?p=password-anda
+//     http://localhost/dek-oke/backend/tools/hash_pass.php?p=password-anda
 //     (sebaiknya hapus/hapus file ini setelah dipakai di lingkungan produksi)
 //
 //   Hasilnya berupa string berawalan $2y$ — tempel ke ADMIN_PASS di config.php

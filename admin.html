@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Admin — SiKonKep</title>
+<title>Admin — Dek-Oke</title>
 <style>
   :root{--biru:#0f2438;--biru2:#1c3a57;--hijau:#1c7c3c;--abu:#eef1f5}
   *{box-sizing:border-box}
@@ -51,7 +51,7 @@
 </head>
 <body>
   <div class="bar">
-    <h1>Admin — SiKonKep</h1>
+    <h1>Admin — Dek-Oke</h1>
     <span id="stat" class="stat">Memuat…</span>
     <a class="btn ghost" id="btnFormulir" href="formulir-daftar-kepentingan-pribadi.html" target="_blank">Formulir</a>
     <button class="btn" id="btnExport">⬇ Export CSV</button>
@@ -115,7 +115,7 @@ let modalId = null;
 function switchTab(t){TAB=t;document.getElementById('tabPengisian').style.background=t==='pengisian'?'var(--hijau)':'#64748b';document.getElementById('tabDeklarasi').style.background=t==='deklarasi'?'var(--hijau)':'#64748b';document.getElementById('btnFormulir').href=TAB==='deklarasi'?'formulir-deklarasi-konflik-kepentingan.html':'formulir-daftar-kepentingan-pribadi.html';muat();}
 function curAPI(k){return API[TAB][k];}
 
-function getToken(){ return localStorage.getItem('sikonkep_token') || ''; }
+function getToken(){ return localStorage.getItem('dek-oke_token') || ''; }
 function authHeader(){ return { 'Authorization':'Bearer '+getToken(), 'Content-Type':'application/json' }; }
 function toast(t){ const el=document.getElementById('toast'); el.textContent=t; el.classList.add('show'); clearTimeout(el._t); el._t=setTimeout(()=>el.classList.remove('show'),2200); }
 
@@ -131,7 +131,7 @@ async function cekAuth(){
     const r=await fetch(API_ME, {headers:{Authorization:'Bearer '+t}});
     const j=await r.json();
     if(!j.ok) throw new Error(j.message);
-    document.getElementById('cUser').textContent=j.user||localStorage.getItem('sikonkep_user')||'-';
+    document.getElementById('cUser').textContent=j.user||localStorage.getItem('dek-oke_user')||'-';
     return true;
   }catch(e){
     needLogin(); return false;
@@ -290,12 +290,12 @@ document.getElementById('btnExport').addEventListener('click', async ()=>{
     if(!r.ok){ const j=await r.json().catch(()=>({message:r.statusText})); throw new Error(j.message||r.statusText); }
     const blob=await r.blob();
     const url=URL.createObjectURL(blob);
-    const a=document.createElement('a'); a.href=url; a.download=TAB==='deklarasi'?'rekap-deklarasi-konflik.csv':'rekap-sikonkep.csv'; a.click();
+    const a=document.createElement('a'); a.href=url; a.download=TAB==='deklarasi'?'rekap-deklarasi-konflik.csv':'rekap-dek-oke.csv'; a.click();
     URL.revokeObjectURL(url);
   }catch(e){ toast('Export gagal: '+e.message); }
 });
 document.getElementById('btnLogout').addEventListener('click', ()=>{
-  localStorage.removeItem('sikonkep_token');
+  localStorage.removeItem('dek-oke_token');
   location.href='login.html';
 });
 document.getElementById('btnRefresh').addEventListener('click', muat);

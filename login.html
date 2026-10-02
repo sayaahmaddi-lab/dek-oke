@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Login Admin — SiKonKep</title>
+<title>Login Admin — Dek-Oke</title>
 <style>
   :root{--biru:#0f2438;--biru2:#1c3a57;--hijau:#1c7c3c}
   *{box-sizing:border-box}
@@ -26,7 +26,7 @@
 </head>
 <body>
   <form class="kartu" id="formLogin" autocomplete="on">
-    <h1>Login Admin SiKonKep</h1>
+    <h1>Login Admin Dek-Oke</h1>
     <p class="sub">Inspektorat Kabupaten Aceh Tengah — masuk untuk melihat rekap formulir.</p>
     <label for="user">Username</label>
     <input id="user" name="username" type="text" required placeholder="ADMIN_USER" autofocus>
@@ -62,8 +62,8 @@ form.addEventListener('submit', async (e)=>{
     });
     const j = await r.json();
     if(j.ok && j.token){
-      localStorage.setItem('sikonkep_token', j.token);
-      localStorage.setItem('sikonkep_user', j.user || username);
+      localStorage.setItem('dek-oke_token', j.token);
+      localStorage.setItem('dek-oke_user', j.user || username);
       toast('Login berhasil — mengalihkan…', true);
       setTimeout(()=> location.href='admin.html', 600);
     } else {
@@ -78,7 +78,7 @@ form.addEventListener('submit', async (e)=>{
 
 // jika sudah login redirect
 try{
-  const t = localStorage.getItem('sikonkep_token');
+  const t = localStorage.getItem('dek-oke_token');
   if(t) {
     // cek validitas via /api/admin?action=me
     fetch('/api/admin?action=me', { headers:{Authorization:'Bearer '+t}})

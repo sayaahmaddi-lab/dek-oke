@@ -4,7 +4,7 @@
 // =============================================================
 
 define('DB_HOST', 'localhost');
-define('DB_NAME', 'sikonkep');
+define('DB_NAME', 'dek_oke');
 define('DB_USER', 'root');
 define('DB_PASS', '');
 

@@ -1,4 +1,4 @@
-# SiKonKep — Aplikasi Formulir Daftar Kepentingan Pribadi
+# Dek-Oke — Aplikasi Formulir Daftar Kepentingan Pribadi
 
 Aplikasi web untuk mengisi **Formulir Daftar Kepentingan Pribadi** (pencegahan
 Konflik Kepentingan) secara digital, lengkap dengan **tanda tangan digital**
@@ -48,7 +48,7 @@ Konflik Kepentingan) secara digital, lengkap dengan **tanda tangan digital**
 1. Pasang XAMPP (Apache + MySQL), salin folder ini ke `htdocs`.
 2. Jalankan `backend/schema.sql` di phpMyAdmin untuk membuat database.
 3. Sesuaikan `backend/config.php` dengan kredensial MySQL Anda.
-4. Buka `http://localhost/sikonkep/formulir-....html` untuk mengisi,
-   dan `http://localhost/sikonkep/backend/admin/` untuk melihat rekap.
+4. Buka `http://localhost/dek-oke/formulir-....html` untuk mengisi,
+   dan `http://localhost/dek-oke/backend/admin/` untuk melihat rekap.
 
 Detail lengkap kedua opsi: lihat **`PANDUAN.md`**.

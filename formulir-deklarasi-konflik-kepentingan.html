@@ -254,7 +254,7 @@
   async function initLihat(){
     document.body.classList.add('mode-lihat');
     document.querySelectorAll('input[data-key], textarea.sel').forEach(function(el){el.readOnly=true;if(el.type==='checkbox'||el.type==='radio')el.tabIndex=-1});
-    var token='';try{token=localStorage.getItem('sikonkep_token')||''}catch(e){}
+    var token='';try{token=localStorage.getItem('dek-oke_token')||''}catch(e){}
     if(!token){toast('Halaman ini khusus admin. Silakan login.');setTimeout(function(){location.href='login.html'},1000);return}
     try{
       var r=await fetch('/api/deklarasi-admin?action=get&id='+encodeURIComponent(LIHAT_ID),{headers:{Authorization:'Bearer '+token}});

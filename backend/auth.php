@@ -66,7 +66,7 @@ function sudah_login(): bool {
 function kunci_file(): string {
     $dir = sys_get_temp_dir();
     $ip  = preg_replace('/[^A-Za-z0-9]/', '_', $_SERVER['REMOTE_ADDR'] ?? '0.0.0.0');
-    return $dir . '/sikonkep_kunci_' . $ip . '.lock';
+    return $dir . '/dek-oke_kunci_' . $ip . '.lock';
 }
 
 function catat_gagal(): int {

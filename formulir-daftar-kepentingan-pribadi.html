@@ -995,7 +995,7 @@
     });
 
     var token = '';
-    try { token = localStorage.getItem('sikonkep_token') || ''; } catch (e) {}
+    try { token = localStorage.getItem('dek-oke_token') || ''; } catch (e) {}
     if (!token) {
       toast('Halaman ini khusus admin. Silakan login terlebih dahulu.');
       setTimeout(function () { location.href = 'login.html'; }, 1000);
@@ -1047,7 +1047,7 @@
         try { info += '  •  Dikirim: ' + new Date(row.created_at).toLocaleString('id-ID'); } catch (e) {}
       }
       document.getElementById('lihatInfo').textContent = info;
-      document.title = 'Lembar #' + row.id + ' — ' + (row.nama || 'Tanpa Nama') + ' — SiKonKep';
+      document.title = 'Lembar #' + row.id + ' — ' + (row.nama || 'Tanpa Nama') + ' — Dek-Oke';
     } catch (e) {
       toast('Gagal memuat lembar: ' + e.message);
       if (/401|token|login|sesi/i.test(String(e.message))) {

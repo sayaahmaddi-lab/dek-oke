@@ -3,11 +3,11 @@
 -- Jalankan lewat phpMyAdmin (tab SQL) atau: mysql -u root < schema.sql
 -- =============================================================
 
-CREATE DATABASE IF NOT EXISTS sikonkep
+CREATE DATABASE IF NOT EXISTS dek_oke
   CHARACTER SET utf8mb4
   COLLATE utf8mb4_unicode_ci;
 
-USE sikonkep;
+USE dek_oke;
 
 CREATE TABLE IF NOT EXISTS pengisian (
   id            INT UNSIGNED NOT NULL AUTO_INCREMENT,

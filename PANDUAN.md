@@ -11,7 +11,7 @@ Proyek ini berisi:
 ## Struktur Folder
 
 ```
-sikonkep/
+dek-oke/
 ├── formulir-daftar-kepentingan-pribadi.html   ← halaman pengisian (untuk pegawai) - otomatis pilih endpoint
 ├── login.html                                ← login admin ONLINE (Vercel + Neon, JWT)
 ├── admin.html                                ← dashboard admin ONLINE (Vercel + Neon)
@@ -47,7 +47,7 @@ sikonkep/
 ### A1. Buat database di Neon (gratis)
 
 1. Buka **https://neon.tech** → Sign up (bisa pakai GitHub/Google) → **Create Project**.
-2. Pilih region **Singapore** (paling dekat ke Indonesia) → buat project (mis. `sikonkep`).
+2. Pilih region **Singapore** (paling dekat ke Indonesia) → buat project (mis. `dek-oke`).
 3. Di dashboard Neon → **Connection string** → pilih **Pooled** → copy string yang terlihat seperti:
    ```
    postgresql://user:password@ep-xxx.neon.tech/neondb?sslmode=require
@@ -83,7 +83,7 @@ ADMIN_SECRET=a3f8c9d2e1b4...32hex...
 
 ### A3. Import repo ke Vercel
 
-1. Buka **https://vercel.com** → Sign up (pakai GitHub) → **Add New → Project** → **Import** repo `sayaahmaddi-lab/sikonkep`.
+1. Buka **https://vercel.com** → Sign up (pakai GitHub) → **Add New → Project** → **Import** repo `sayaahmaddi-lab/dek-oke`.
 2. Vercel otomatis deteksi **Framework: Other** (karena static + Functions) → biarkan default.
 3. Buka **Settings → Environment Variables** → tambah 4 variabel satu per satu (Environment: **Production** + **Preview**):
    - `DATABASE_URL`
@@ -91,7 +91,7 @@ ADMIN_SECRET=a3f8c9d2e1b4...32hex...
    - `ADMIN_PASS`
    - `ADMIN_SECRET`
 4. Klik **Deploy** → tunggu ±1 menit hingga muncul **Congratulations**.
-5. Buka URL yang diberikan Vercel, mis. `https://sikonkep-xxx.vercel.app`:
+5. Buka URL yang diberikan Vercel, mis. `https://dek-oke-xxx.vercel.app`:
    - Formulir: `.../formulir-daftar-kepentingan-pribadi.html`
    - Login admin: `.../login.html` (atau `.../login`) → masuk dengan `ADMIN_USER`/`ADMIN_PASS` → otomatis ke `.../admin.html`
    - Cek `.../api/admin?action=list` harus minta token (401 bila tanpa login — tanda aman).
@@ -120,20 +120,20 @@ ADMIN_SECRET=a3f8c9d2e1b4...32hex...
 - Start **Apache** dan **MySQL** dari XAMPP Control Panel.
 
 ### 2. Salin folder proyek
-- Salin seluruh folder `sikonkep` ke `C:\xampp\htdocs\sikonkep`
-  (hasil akhir: `C:\xampp\htdocs\sikonkep\formulir-....html` dan `C:\xampp\htdocs\sikonkep\backend\...`).
+- Salin seluruh folder `dek-oke` ke `C:\xampp\htdocs\dek-oke`
+  (hasil akhir: `C:\xampp\htdocs\dek-oke\formulir-....html` dan `C:\xampp\htdocs\dek-oke\backend\...`).
 
 ### 3. Buat database
 - Buka browser → **http://localhost/phpmyadmin**
 - Pilih tab **SQL**, lalu tempel seluruh isi file `backend/schema.sql`, klik **Go**.
   - Atau via terminal: `mysql -u root < backend/schema.sql`
-- Akan terbentuk database **`sikonkep`** dan tabel **`pengisian`**.
+- Akan terbentuk database **`dek_oke`** dan tabel **`pengisian`**.
 
 ### 4. Atur koneksi database & akun admin
 - Buka `backend/config.php`, sesuaikan:
   ```php
   define('DB_HOST', 'localhost');   // host (default localhost)
-  define('DB_NAME', 'sikonkep');    // nama database
+  define('DB_NAME', 'dek_oke');    // nama database
   define('DB_USER', 'root');        // user (default root di XAMPP)
   define('DB_PASS', '');            // password (default kosong di XAMPP)
   ```
@@ -145,7 +145,7 @@ ADMIN_SECRET=a3f8c9d2e1b4...32hex...
 
 ### 5. (Disarankan) Ganti password admin dengan hash bcrypt
 - Password boleh ditulis biasa, tapi lebih aman disimpan sebagai hash.
-- Jalankan dari terminal di folder `htdocs/sikonkep`:
+- Jalankan dari terminal di folder `htdocs/dek-oke`:
   ```
   php backend/tools/hash_pass.php "password-rahasia-anda"
   ```
@@ -156,8 +156,8 @@ ADMIN_SECRET=a3f8c9d2e1b4...32hex...
 - Setelah selesai, **hapus folder `backend/tools/`** agar alatnya tidak terpublikasi.
 
 ### 6. Akses aplikasi
-- Formulir (pegawai): **http://localhost/sikonkep/formulir-daftar-kepentingan-pribadi.html**
-- Admin (rekap): **http://localhost/sikonkep/backend/admin/**
+- Formulir (pegawai): **http://localhost/dek-oke/formulir-daftar-kepentingan-pribadi.html**
+- Admin (rekap): **http://localhost/dek-oke/backend/admin/**
   → akan diarahkan ke halaman **login** terlebih dahulu.
 
 ---
@@ -211,7 +211,7 @@ Browser (formulir + tanda tangan digital)
 backend/simpan.php (PHP + PDO)
         │ 2. Validasi, INSERT ke MySQL
         ▼
-MySQL: database sikonkep → tabel pengisian
+MySQL: database dek_oke → tabel pengisian
         ▲
 backend/admin/index.php & detail.php (PHP sesi)
 ```

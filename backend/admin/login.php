@@ -74,7 +74,7 @@ if (($_SERVER['REQUEST_METHOD'] ?? '') === 'POST') {
 </head>
 <body>
   <div class="kartu">
-    <h1>Admin SiKonKep</h1>
+    <h1>Admin Dek-Oke</h1>
     <p class="sub">Formulir Daftar Kepentingan Pribadi</p>
     <form method="post" autocomplete="off">
       <?= csrf_field() ?>
