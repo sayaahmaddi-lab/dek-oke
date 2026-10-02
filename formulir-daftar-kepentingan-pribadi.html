@@ -523,6 +523,18 @@
 </div>
 
 <div id="toast"></div>
+<div id="receipt" onclick="if(event.target===this) tutupReceipt()"><div class="box">
+  <div class="ok">✓</div>
+  <h3>Berhasil direkam!</h3>
+  <p>Daftar Kepentingan Pribadi Anda sudah masuk ke database. Simpan kode berikut untuk mengecek status tanpa login admin.</p>
+  <div class="kode" id="receiptKode">ID #—</div>
+  <p style="font-size:12px;color:#64748b">Pengisi tidak dapat membuka halaman admin. Gunakan tombol Cek Status di bawah.</p>
+  <div class="actions">
+    <button class="utama" onclick="cekStatus()">🔍 Cek Status</button>
+    <a class="ghost" id="receiptLink" href="cek-status.html" target="_blank">Buka Halaman Cek</a>
+    <button class="ghost" onclick="tutupReceipt()">Tutup</button>
+  </div>
+</div></div>
 
 <script>
   /* ---------- Membangun baris tabel A, B, C, D ---------- */
@@ -831,6 +843,13 @@
     };
   }
 
+  
+  var LAST_ID=null;
+  function showReceipt(id){LAST_ID=id; var k=document.getElementById('receiptKode'); if(k) k.textContent='ID #'+id+'  •  '+ (document.querySelector('[data-key="nip"]')?.value||'').trim() + '  •  Simpan!'; var l=document.getElementById('receiptLink'); if(l) l.href='cek-status.html?id='+encodeURIComponent(id); document.getElementById('receipt').classList.add('show'); try{localStorage.setItem('dekoke_last_id_'+location.pathname, String(id))}catch(e){} }
+  function tutupReceipt(){document.getElementById('receipt').classList.remove('show')}
+  function cekStatus(){ if(!LAST_ID) return; window.open('cek-status.html?id='+encodeURIComponent(LAST_ID),'_blank') }
+  async function cekCepat(tipe){ var input=document.getElementById(tipe==='dek') ? null : null; }
+
   async function kirimKeServer() {
     var btn = document.getElementById('btnKirim');
     var payload = susunPayload();
@@ -862,7 +881,7 @@
         r = await cobaKirim(URL_FALLBACK);
       }
       if (r.hasil.ok) {
-        toast('Tersimpan ke database (ID #' + r.hasil.id + ').');
+        showReceipt(r.hasil.id);
       } else {
         toast('Gagal menyimpan: ' + (r.hasil.message || r.resp.status));
       }

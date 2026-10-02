@@ -80,6 +80,20 @@
   @media print{body{background:#fff}.toolbar{display:none!important}.page{margin:0;padding:0;box-shadow:none;max-width:none}input,textarea.sel{padding:1px 2px}textarea.sel:focus{background:transparent}.bagian,.pernyataan,.ttd{page-break-inside:avoid}}
   #toast{position:fixed;bottom:18px;left:50%;transform:translateX(-50%) translateY(20px);background:#0f2438;color:#fff;padding:9px 18px;border-radius:6px;font-size:13px;opacity:0;pointer-events:none;transition:.25s;z-index:99}
   #toast.tampil{opacity:1;transform:translateX(-50%) translateY(0)}
+  #receipt{position:fixed;inset:0;background:rgba(10,20,35,.55);display:none;align-items:center;justify-content:center;padding:18px;z-index:90}
+  #receipt.show{display:flex}
+  #receipt .box{background:#fff;border-radius:12px;max-width:520px;width:100%;padding:22px 20px;box-shadow:0 14px 40px rgba(0,0,0,.35);text-align:center}
+  #receipt .ok{width:56px;height:56px;margin:0 auto 12px;border-radius:50%;background:#e7f3ec;color:#1c7c3c;display:flex;align-items:center;justify-content:center;font-size:30px}
+  #receipt h3{margin:0 0 6px;font-size:18px;color:#0f2438}
+  #receipt p{margin:0 0 12px;font-size:13.5px;color:#475569;line-height:1.5}
+  #receipt .kode{font-family:monospace;background:#f1f5f9;border:1px solid #cbd5e1;border-radius:8px;padding:10px 12px;font-size:14px;margin:10px 0}
+  #receipt .actions{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:14px}
+  #receipt .actions a, #receipt .actions button{padding:9px 16px;border-radius:8px;font-weight:700;font-size:13px;text-decoration:none;cursor:pointer;border:1px solid #1c7c3c}
+  #receipt .actions .utama{background:#1c7c3c;color:#fff;border-color:#1c7c3c}
+  #receipt .actions .ghost{background:#fff;color:#1c7c3c}
+  .cek-mini{margin:10px auto 0;max-width:520px;display:flex;gap:8px;align-items:center;justify-content:center;flex-wrap:wrap;font-size:12.5px}
+  .cek-mini input{padding:7px 10px;border:1px solid #cbd5e1;border-radius:6px;min-width:180px}
+  .cek-mini button{padding:7px 12px;border-radius:6px;border:1px solid #1c3a57;background:#1c3a57;color:#fff;cursor:pointer;font-weight:600}
 </style>
 </head>
 <body>
@@ -179,6 +193,18 @@
   <p class="footer-note">Formulir Deklarasi Konflik Kepentingan — Pemerintah Kabupaten Aceh Tengah</p>
 </div>
 <div id="toast"></div>
+<div id="receipt" onclick="if(event.target===this) tutupReceipt()"><div class="box">
+  <div class="ok">✓</div>
+  <h3>Berhasil direkam!</h3>
+  <p>Deklarasi Konflik Kepentingan Anda sudah masuk ke database. Simpan kode berikut untuk mengecek status tanpa login admin.</p>
+  <div class="kode" id="receiptKode">ID #—</div>
+  <p style="font-size:12px;color:#64748b">Pengisi tidak dapat membuka halaman admin. Gunakan tombol Cek Status di bawah.</p>
+  <div class="actions">
+    <button class="utama" onclick="cekStatus()">🔍 Cek Status</button>
+    <a class="ghost" id="receiptLink" href="cek-status.html" target="_blank">Buka Halaman Cek</a>
+    <button class="ghost" onclick="tutupReceipt()">Tutup</button>
+  </div>
+</div></div>
 <script>
 (function(){
   var KUNCI='dek-oke-deklarasi'; var KUNCI_TTD='dek-oke-deklarasi-ttd'; var RASIO=2;
@@ -225,6 +251,13 @@
       ttd_nama:f.ttd_nama||f.nama||'', ttd_nip:f.ttd_nip||f.nip||''
     }
   }
+  
+  var LAST_ID=null;
+  function showReceipt(id){LAST_ID=id; var k=document.getElementById('receiptKode'); if(k) k.textContent='ID #'+id+'  •  '+ (document.querySelector('[data-key="nip"]')?.value||'').trim() + '  •  Simpan!'; var l=document.getElementById('receiptLink'); if(l) l.href='cek-status.html?id='+encodeURIComponent(id); document.getElementById('receipt').classList.add('show'); try{localStorage.setItem('dekoke_last_id_'+location.pathname, String(id))}catch(e){} }
+  function tutupReceipt(){document.getElementById('receipt').classList.remove('show')}
+  function cekStatus(){ if(!LAST_ID) return; window.open('cek-status.html?id='+encodeURIComponent(LAST_ID),'_blank') }
+  async function cekCepat(tipe){ var input=document.getElementById(tipe==='dek') ? null : null; }
+
   window.kirimKeServer=async function(){
     var btn=document.getElementById('btnKirim'); var payload=susunPayload();
     if(!payload.nama||!payload.nip){toast('Gagal: Nama dan NIP wajib diisi.');return}
@@ -233,7 +266,7 @@
     try{
       var r=await coba(URL_SERVER);
       if(r.resp.status===404&&URL_FALLBACK!==URL_SERVER) r=await coba(URL_FALLBACK);
-      if(r.hasil.ok) toast('Tersimpan (ID #'+r.hasil.id+').');
+      if(r.hasil.ok) showReceipt(r.hasil.id);
       else toast('Gagal menyimpan: '+(r.hasil.message||r.resp.status));
     }catch(e){toast('Tidak dapat terhubung ke server: '+(e.message||''))}
     finally{btn.disabled=false;btn.textContent=txt}
