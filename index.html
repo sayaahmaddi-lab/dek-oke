@@ -130,7 +130,7 @@
   .judul-seksi h2{font-size:28px;color:var(--biru);font-weight:700;margin-bottom:8px}
   .judul-seksi .garis-judul{width:56px;height:3px;background:var(--aksen2);margin:0 auto 12px}
   .judul-seksi p{max-width:640px;margin:0 auto;color:#77828d;font-size:14px}
-  .kartu-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
+  .kartu-grid{display:grid;grid-template-columns:repeat(2,minmax(300px,360px));justify-content:center;gap:26px}
   .kartu{
     background:#fff;border:1px solid var(--garis);border-top:3px solid var(--aksen2);
     padding:30px 26px;text-align:center;transition:transform .2s,box-shadow .2s;
@@ -357,7 +357,10 @@
       <h2>Sudah siap mendeklarasikan kepentingan pribadi Anda?</h2>
       <p>Pengisian hanya membutuhkan beberapa menit. Isian Anda membantu pencegahan konflik kepentingan di lingkungan Pemerintah Kabupaten Aceh Tengah.</p>
     </div>
-    <a class="tombol" href="formulir-daftar-kepentingan-pribadi.html">Isi Formulir</a>
+    <div style="display:flex;gap:10px;flex-wrap:wrap">
+      <a class="tombol" href="formulir-daftar-kepentingan-pribadi.html">Daftar Kepentingan Pribadi</a>
+      <a class="tombol" style="background:#fff;color:var(--aksen) !important;border:1px solid var(--aksen2)" href="formulir-deklarasi-konflik-kepentingan.html">Deklarasi Konflik Kepentingan</a>
+    </div>
   </div>
 </section>
 
