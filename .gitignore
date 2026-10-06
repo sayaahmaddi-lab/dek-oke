@@ -27,3 +27,7 @@ Thumbs.db
 .idea/
 *.swp
 *.swo
+
+# Data kerja lokal (berisi data pribadi – jangan di-commit)
+work/
+output/
