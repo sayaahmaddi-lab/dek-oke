@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="420.0mm" height="297.0mm" viewBox="0 0 420.0 297.0">
+<title>Rak Piring - Pembuatan</title>
+<rect width="420.0" height="297.0" fill="white"/>
+<rect x="6.00" y="6.00" width="408.00" height="285.00" fill="none" stroke="#1a1a1a" stroke-width="0.7"/>
+<rect x="8.50" y="8.50" width="403.00" height="280.00" fill="none" stroke="#1a1a1a" stroke-width="0.25"/>
+<text x="14.00" y="15.50" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="5.6" font-weight="bold" fill="#111111" text-anchor="start" dominant-baseline="central">PEMBUATAN  —  RAK PIRING &amp; GELAS 600 × 800 × 450 mm</text>
+<text x="14.00" y="21.00" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="2.7" font-weight="normal" fill="#444" text-anchor="start" dominant-baseline="central">Daftar potongan, kebutuhan bahan, denah pemotongan, dan langkah perakitan</text>
+<line x1="14.00" y1="24.00" x2="406.00" y2="24.00" stroke="#1a1a1a" stroke-width="0.35" stroke-linecap="round"/>
+<text x="16.00" y="30.00" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="2.7" font-weight="bold" fill="#111111" text-anchor="start" dominant-baseline="central">DAFTAR POTONGAN  (semua plywood 18 mm)</text>
+<rect x="16.00" y="33.00" width="180.00" height="34.30" fill="white" stroke="#1a1a1a" stroke-width="0.25"/>
+<line x1="16.00" y1="37.90" x2="196.00" y2="37.90" stroke="#c9c9c9" stroke-width="0.18" stroke-linecap="round"/>
+<line x1="16.00" y1="42.80" x2="196.00" y2="42.80" stroke="#c9c9c9" stroke-width="0.18" stroke-linecap="round"/>
+<line x1="16.00" y1="47.70" x2="196.00" y2="47.70" stroke="#c9c9c9" stroke-width="0.18" stroke-linecap="round"/>
+<line x1="16.00" y1="52.60" x2="196.00" y2="52.60" stroke="#c9c9c9" stroke-width="0.18" stroke-linecap="round"/>
+<line x1="16.00" y1="57.50" x2="196.00" y2="57.50" stroke="#c9c9c9" stroke-width="0.18" stroke-linecap="round"/>
+<line x1="16.00" y1="62.40" x2="196.00" y2="62.40" stroke="#c9c9c9" stroke-width="0.18" stroke-linecap="round"/>
+<line x1="29.00" y1="33.00" x2="29.00" y2="67.30" stroke="#c9c9c9" stroke-width="0.18" stroke-linecap="round"/>
+<line x1="121.00" y1="33.00" x2="121.00" y2="67.30" stroke="#c9c9c9" stroke-width="0.18" stroke-linecap="round"/>
+<line x1="132.00" y1="33.00" x2="132.00" y2="67.30" stroke="#c9c9c9" stroke-width="0.18" stroke-linecap="round"/>
+<rect x="16.00" y="33.00" width="180.00" height="4.90" fill="#e8eef4"/>
+<rect x="16.00" y="33.00" width="180.00" height="4.90" fill="none" stroke="#1a1a1a" stroke-width="0.25"/>
+<text x="22.50" y="35.45" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="2.35" font-weight="bold" fill="#111111" text-anchor="middle" dominant-baseline="central">KODE</text>
+<text x="30.30" y="35.45" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="2.35" font-weight="bold" fill="#111111" text-anchor="start" dominant-baseline="central">NAMA BAGIAN</text>
+<text x="126.50" y="35.45" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="2.35" font-weight="bold" fill="#111111" text-anchor="middle" dominant-baseline="central">QTY</text>
+<text x="164.00" y="35.45" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="2.35" font-weight="bold" fill="#111111" text-anchor="middle" dominant-baseline="central">UKURAN (P × L) mm</text>
+<text x="22.50" y="40.35" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="2.35" font-weight="normal" fill="#111111" text-anchor="middle" dominant-baseline="central">A</text>
+<text x="30.30" y="40.35" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="2.35" font-weight="normal" fill="#111111" text-anchor="start" dominant-baseline="central">Panel samping kiri / kanan</text>
+<text x="126.50" y="40.35" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="2.35" font-weight="normal" fill="#111111" text-anchor="middle" dominant-baseline="central">2</text>
+<text x="164.00" y="40.35" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="2.35" font-weight="normal" fill="#111111" text-anchor="middle" dominant-baseline="central">800 × 450</text>
+<text x="22.50" y="45.25" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="2.35" font-weight="normal" fill="#111111" text-anchor="middle" dominant-baseline="central">B</text>
+<text x="30.30" y="45.25" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="2.35" font-weight="normal" fill="#111111" text-anchor="start" dominant-baseline="central">Papan bawah, papan rak, papan atas</text>
+<text x="126.50" y="45.25" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="2.35" font-weight="normal" fill="#111111" text-anchor="middle" dominant-baseline="central">3</text>
+<text x="164.00" y="45.25" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="2.35" font-weight="normal" fill="#111111" text-anchor="middle" dominant-baseline="central">564 × 450</text>
+<text x="22.50" y="50.15" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="2.35" font-weight="normal" fill="#111111" text-anchor="middle" dominant-baseline="central">C</text>
+<text x="30.30" y="50.15" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="2.35" font-weight="normal" fill="#111111" text-anchor="start" dominant-baseline="central">Dinding belakang (sandaran piring)</text>
+<text x="126.50" y="50.15" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="2.35" font-weight="normal" fill="#111111" text-anchor="middle" dominant-baseline="central">1</text>
+<text x="164.00" y="50.15" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="2.35" font-weight="normal" fill="#111111" text-anchor="middle" dominant-baseline="central">564 × 446</text>
+<text x="22.50" y="55.05" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="2.35" font-weight="normal" fill="#111111" text-anchor="middle" dominant-baseline="central">D</text>
+<text x="30.30" y="55.05" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="2.35" font-weight="normal" fill="#111111" text-anchor="start" dominant-baseline="central">Pembatas / sekat depan</text>
+<text x="126.50" y="55.05" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="2.35" font-weight="normal" fill="#111111" text-anchor="middle" dominant-baseline="central">3</text>
+<text x="164.00" y="55.05" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="2.35" font-weight="normal" fill="#111111" text-anchor="middle" dominant-baseline="central">446 × 84</text>
+<text x="22.50" y="59.95" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="2.35" font-weight="normal" fill="#111111" text-anchor="middle" dominant-baseline="central">E</text>
+<text x="30.30" y="59.95" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="2.35" font-weight="normal" fill="#111111" text-anchor="start" dominant-baseline="central">Lis depan (atas &amp; bawah)</text>
+<text x="126.50" y="59.95" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="2.35" font-weight="normal" fill="#111111" text-anchor="middle" dominant-baseline="central">2</text>
+<text x="164.00" y="59.95" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="2.35" font-weight="normal" fill="#111111" text-anchor="middle" dominant-baseline="central">564 × 20</text>
+<text x="22.50" y="64.85" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="2.35" font-weight="normal" fill="#111111" text-anchor="middle" dominant-baseline="central"></text>
+<text x="30.30" y="64.85" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="2.35" font-weight="normal" fill="#111111" text-anchor="start" dominant-baseline="central">TOTAL BAHAN 18 mm</text>
+<text x="126.50" y="64.85" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="2.35" font-weight="normal" fill="#111111" text-anchor="middle" dominant-baseline="central"></text>
+<text x="164.00" y="64.85" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="2.35" font-weight="normal" fill="#111111" text-anchor="middle" dominant-baseline="central">1,87 m²</text>
+<text x="16.00" y="120.00" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="2.3" font-weight="normal" fill="#555" text-anchor="start" dominant-baseline="central">1 lembar plywood 1220 × 2440 = 2,98 m²  •  terpakai 1,87 m² (63%)  •  sisa ± 1,11 m²</text>
+<text x="16.00" y="128.00" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="2.3" font-weight="normal" fill="#b4472c" text-anchor="start" dominant-baseline="central">TAMBAHAN: 16 alur sisir 12 × 8 × 44 mm pada papan rak (jarak pusat 25 mm)</text>
+<text x="16.00" y="138.00" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="2.7" font-weight="bold" fill="#111111" text-anchor="start" dominant-baseline="central">BAHAN / AKSESORIS</text>
+<rect x="16.00" y="141.00" width="160.00" height="37.60" fill="white" stroke="#1a1a1a" stroke-width="0.25"/>
+<line x1="16.00" y1="145.70" x2="176.00" y2="145.70" stroke="#c9c9c9" stroke-width="0.18" stroke-linecap="round"/>
+<line x1="16.00" y1="150.40" x2="176.00" y2="150.40" stroke="#c9c9c9" stroke-width="0.18" stroke-linecap="round"/>
+<line x1="16.00" y1="155.10" x2="176.00" y2="155.10" stroke="#c9c9c9" stroke-width="0.18" stroke-linecap="round"/>
+<line x1="16.00" y1="159.80" x2="176.00" y2="159.80" stroke="#c9c9c9" stroke-width="0.18" stroke-linecap="round"/>
+<line x1="16.00" y1="164.50" x2="176.00" y2="164.50" stroke="#c9c9c9" stroke-width="0.18" stroke-linecap="round"/>
+<line x1="16.00" y1="169.20" x2="176.00" y2="169.20" stroke="#c9c9c9" stroke-width="0.18" stroke-linecap="round"/>
+<line x1="16.00" y1="173.90" x2="176.00" y2="173.90" stroke="#c9c9c9" stroke-width="0.18" stroke-linecap="round"/>
+<line x1="82.00" y1="141.00" x2="82.00" y2="178.60" stroke="#c9c9c9" stroke-width="0.18" stroke-linecap="round"/>
+<line x1="114.00" y1="141.00" x2="114.00" y2="178.60" stroke="#c9c9c9" stroke-width="0.18" stroke-linecap="round"/>
+<rect x="16.00" y="141.00" width="160.00" height="4.70" fill="#e8eef4"/>
+<rect x="16.00" y="141.00" width="160.00" height="4.70" fill="none" stroke="#1a1a1a" stroke-width="0.25"/>
+<text x="17.30" y="143.35" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="2.3" font-weight="bold" fill="#111111" text-anchor="start" dominant-baseline="central">BAHAN / AKSESORIS</text>
+<text x="98.00" y="143.35" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="2.3" font-weight="bold" fill="#111111" text-anchor="middle" dominant-baseline="central">JUMLAH</text>
+<text x="115.30" y="143.35" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="2.3" font-weight="bold" fill="#111111" text-anchor="start" dominant-baseline="central">KETERANGAN</text>
+<text x="17.30" y="148.05" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="2.3" font-weight="normal" fill="#111111" text-anchor="start" dominant-baseline="central">Plywood 18 mm (1220 × 2440)</text>
+<text x="98.00" y="148.05" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="2.3" font-weight="normal" fill="#111111" text-anchor="middle" dominant-baseline="central">1 lembar</text>
+<text x="115.30" y="148.05" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="2.3" font-weight="normal" fill="#111111" text-anchor="start" dominant-baseline="central">terpakai 63%</text>
+<text x="17.30" y="152.75" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="2.3" font-weight="normal" fill="#111111" text-anchor="start" dominant-baseline="central">Lem kayu PVA</text>
+<text x="98.00" y="152.75" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="2.3" font-weight="normal" fill="#111111" text-anchor="middle" dominant-baseline="central">± 500 gram</text>
+<text x="115.30" y="152.75" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="2.3" font-weight="normal" fill="#111111" text-anchor="start" dominant-baseline="central">semua sambungan</text>
+<text x="17.30" y="157.45" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="2.3" font-weight="normal" fill="#111111" text-anchor="start" dominant-baseline="central">Sekrup 4 × 50 mm kepala rata</text>
+<text x="98.00" y="157.45" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="2.3" font-weight="normal" fill="#111111" text-anchor="middle" dominant-baseline="central">± 40 buah</text>
+<text x="115.30" y="157.45" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="2.3" font-weight="normal" fill="#111111" text-anchor="start" dominant-baseline="central">bor awal ø3 mm</text>
+<text x="17.30" y="162.15" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="2.3" font-weight="normal" fill="#111111" text-anchor="start" dominant-baseline="central">Sekrup 3 × 20 mm</text>
+<text x="98.00" y="162.15" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="2.3" font-weight="normal" fill="#111111" text-anchor="middle" dominant-baseline="central">± 12 buah</text>
+<text x="115.30" y="162.15" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="2.3" font-weight="normal" fill="#111111" text-anchor="start" dominant-baseline="central">lis depan &amp; pembatas</text>
+<text x="17.30" y="166.85" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="2.3" font-weight="normal" fill="#111111" text-anchor="start" dominant-baseline="central">Vernis / pelitur tahan air</text>
+<text x="98.00" y="166.85" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="2.3" font-weight="normal" fill="#111111" text-anchor="middle" dominant-baseline="central">1 kaleng kecil</text>
+<text x="115.30" y="166.85" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="2.3" font-weight="normal" fill="#111111" text-anchor="start" dominant-baseline="central">2–3 lapis seluruh permukaan</text>
+<text x="17.30" y="171.55" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="2.3" font-weight="normal" fill="#111111" text-anchor="start" dominant-baseline="central">Karet alas / felt</text>
+<text x="98.00" y="171.55" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="2.3" font-weight="normal" fill="#111111" text-anchor="middle" dominant-baseline="central">4 buah</text>
+<text x="115.30" y="171.55" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="2.3" font-weight="normal" fill="#111111" text-anchor="start" dominant-baseline="central">alas bawah rak</text>
+<text x="17.30" y="176.25" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="2.3" font-weight="normal" fill="#111111" text-anchor="start" dominant-baseline="central">Router bit lurus 12 mm</text>
+<text x="98.00" y="176.25" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="2.3" font-weight="normal" fill="#111111" text-anchor="middle" dominant-baseline="central">1 buah</text>
+<text x="115.30" y="176.25" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="2.3" font-weight="normal" fill="#111111" text-anchor="start" dominant-baseline="central">untuk 16 alur sisir</text>
+<rect x="250.00" y="34.00" width="50.83" height="101.67" fill="#fbfbf8" stroke="#1a1a1a" stroke-width="0.5"/>
+<rect x="250.00" y="34.00" width="42.42" height="75.50" fill="#f2f0e8"/>
+<rect x="273.67" y="34.00" width="18.75" height="33.33" fill="#e6d7b8" stroke="#8a7a55" stroke-width="0.22"/>
+<text x="283.04" y="50.67" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="2.4" font-weight="bold" fill="#6b5b35" text-anchor="middle" dominant-baseline="central">A1</text>
+<rect x="273.67" y="67.50" width="18.75" height="33.33" fill="#e6d7b8" stroke="#8a7a55" stroke-width="0.22"/>
+<text x="283.04" y="84.17" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="2.4" font-weight="bold" fill="#6b5b35" text-anchor="middle" dominant-baseline="central">A2</text>
+<rect x="250.00" y="34.00" width="23.50" height="18.75" fill="#efe3c6" stroke="#8a7a55" stroke-width="0.22"/>
+<text x="261.75" y="43.38" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="2.4" font-weight="bold" fill="#6b5b35" text-anchor="middle" dominant-baseline="central">B1</text>
+<rect x="250.00" y="52.92" width="23.50" height="18.75" fill="#efe3c6" stroke="#8a7a55" stroke-width="0.22"/>
+<text x="261.75" y="62.29" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="2.4" font-weight="bold" fill="#6b5b35" text-anchor="middle" dominant-baseline="central">B2</text>
+<rect x="250.00" y="71.83" width="23.50" height="18.75" fill="#efe3c6" stroke="#8a7a55" stroke-width="0.22"/>
+<text x="261.75" y="81.21" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="2.4" font-weight="bold" fill="#6b5b35" text-anchor="middle" dominant-baseline="central">B3</text>
+<rect x="250.00" y="90.75" width="23.50" height="18.58" fill="#e4d5b4" stroke="#8a7a55" stroke-width="0.22"/>
+<text x="261.75" y="100.04" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="2.4" font-weight="bold" fill="#6b5b35" text-anchor="middle" dominant-baseline="central">C</text>
+<rect x="250.00" y="109.50" width="3.50" height="18.58" fill="#ece0c0" stroke="#8a7a55" stroke-width="0.22"/>
+<rect x="253.67" y="109.50" width="3.50" height="18.58" fill="#ece0c0" stroke="#8a7a55" stroke-width="0.22"/>
+<rect x="257.33" y="109.50" width="3.50" height="18.58" fill="#ece0c0" stroke="#8a7a55" stroke-width="0.22"/>
+<rect x="250.00" y="128.25" width="23.50" height="0.83" fill="#f5efdd" stroke="#8a7a55" stroke-width="0.22"/>
+<rect x="250.00" y="129.25" width="23.50" height="0.83" fill="#f5efdd" stroke="#8a7a55" stroke-width="0.22"/>
+<text x="275.42" y="30.60" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="2.9" font-weight="bold" fill="#111111" text-anchor="middle" dominant-baseline="central">DENAH PEMOTONGAN  —  1 lembar plywood 1220 × 2440 mm   (1 : 24)</text>
+<text x="275.42" y="139.27" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="2.2" font-weight="normal" fill="#555" text-anchor="middle" dominant-baseline="central">bahan terpakai 1,87 m² dari 2,98 m² (63%) • sisa ± 1,11 m² untuk cadangan / 3 pembatas tinggi</text>
+<line x1="303.83" y1="34.00" x2="303.83" y2="135.67" stroke="#0f5fa8" stroke-width="0.2" stroke-linecap="round"/>
+<text x="305.83" y="84.83" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="2.2" font-weight="normal" fill="#0f5fa8" text-anchor="start" dominant-baseline="central">2440 mm</text>
+<line x1="250.00" y1="142.67" x2="300.83" y2="142.67" stroke="#0f5fa8" stroke-width="0.2" stroke-linecap="round"/>
+<text x="275.42" y="145.07" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="2.2" font-weight="normal" fill="#0f5fa8" text-anchor="middle" dominant-baseline="central">1220 mm</text>
+<text x="16.00" y="178.00" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="3.3" font-weight="bold" fill="#111111" text-anchor="start" dominant-baseline="central">LANGKAH PERAKITAN</text>
+<text x="16.40" y="184.00" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="2.35" font-weight="bold" fill="#b4472c" text-anchor="start" dominant-baseline="central">1.</text>
+<text x="20.40" y="184.00" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="2.3" font-weight="normal" fill="#111111" text-anchor="start" dominant-baseline="central">Potong semua bagian A–E sesuai daftar. Amplas 120 → 240.</text>
+<text x="16.40" y="188.60" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="2.35" font-weight="bold" fill="#b4472c" text-anchor="start" dominant-baseline="central">2.</text>
+<text x="20.40" y="188.60" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="2.3" font-weight="normal" fill="#111111" text-anchor="start" dominant-baseline="central">Tandai 16 garis tengah alur pada papan rak: mulai 112,5 mm</text>
+<text x="20.40" y="192.00" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="2.3" font-weight="normal" fill="#111111" text-anchor="start" dominant-baseline="central">dari tepi kiri, selanjutnya setiap 25 mm.</text>
+<text x="16.40" y="196.00" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="2.35" font-weight="bold" fill="#b4472c" text-anchor="start" dominant-baseline="central">3.</text>
+<text x="20.40" y="196.00" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="2.3" font-weight="normal" fill="#111111" text-anchor="start" dominant-baseline="central">Buat alur 12 × 8 × 44 mm, dari 38 s.d. 82 mm diukur dari</text>
+<text x="20.40" y="199.40" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="2.3" font-weight="normal" fill="#111111" text-anchor="start" dominant-baseline="central">tepi belakang papan rak.</text>
+<text x="16.40" y="203.40" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="2.35" font-weight="bold" fill="#b4472c" text-anchor="start" dominant-baseline="central">4.</text>
+<text x="20.40" y="203.40" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="2.3" font-weight="normal" fill="#111111" text-anchor="start" dominant-baseline="central">Rakit bentuk U: papan bawah B + 2 panel samping A (lem +</text>
+<text x="20.40" y="206.80" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="2.3" font-weight="normal" fill="#111111" text-anchor="start" dominant-baseline="central">sekrup 4×50).</text>
+<text x="16.40" y="210.80" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="2.35" font-weight="bold" fill="#b4472c" text-anchor="start" dominant-baseline="central">5.</text>
+<text x="20.40" y="210.80" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="2.3" font-weight="normal" fill="#111111" text-anchor="start" dominant-baseline="central">Pasang lis depan E di bagian bawah (z 18–38) di antara</text>
+<text x="20.40" y="214.20" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="2.3" font-weight="normal" fill="#111111" text-anchor="start" dominant-baseline="central">panel samping.</text>
+<text x="16.40" y="218.20" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="2.35" font-weight="bold" fill="#b4472c" text-anchor="start" dominant-baseline="central">6.</text>
+<text x="20.40" y="218.20" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="2.3" font-weight="normal" fill="#111111" text-anchor="start" dominant-baseline="central">Pasang papan rak B pada ketinggian atas 336 mm dari alas</text>
+<text x="20.40" y="221.60" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="2.3" font-weight="normal" fill="#111111" text-anchor="start" dominant-baseline="central">(alur menghadap ke atas).</text>
+<text x="138.40" y="184.00" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="2.35" font-weight="bold" fill="#b4472c" text-anchor="start" dominant-baseline="central">7.</text>
+<text x="142.40" y="184.00" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="2.3" font-weight="normal" fill="#111111" text-anchor="start" dominant-baseline="central">Pasang dinding belakang C mulai z 336 sampai 782, menempel</text>
+<text x="142.40" y="187.40" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="2.3" font-weight="normal" fill="#111111" text-anchor="start" dominant-baseline="central">papan rak.</text>
+<text x="138.40" y="191.40" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="2.35" font-weight="bold" fill="#b4472c" text-anchor="start" dominant-baseline="central">8.</text>
+<text x="142.40" y="191.40" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="2.3" font-weight="normal" fill="#111111" text-anchor="start" dominant-baseline="central">Pasang 3 pembatas D (di depan, 88–172 mm dari muka</text>
+<text x="142.40" y="194.80" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="2.3" font-weight="normal" fill="#111111" text-anchor="start" dominant-baseline="central">belakang) dari papan rak ke papan atas.</text>
+<text x="138.40" y="198.80" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="2.35" font-weight="bold" fill="#b4472c" text-anchor="start" dominant-baseline="central">9.</text>
+<text x="142.40" y="198.80" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="2.3" font-weight="normal" fill="#111111" text-anchor="start" dominant-baseline="central">Pasang papan atas B (lem + sekrup dari atas). Pasang lis</text>
+<text x="142.40" y="202.20" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="2.3" font-weight="normal" fill="#111111" text-anchor="start" dominant-baseline="central">depan E yang kedua di z 336–356.</text>
+<text x="138.40" y="206.20" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="2.35" font-weight="bold" fill="#b4472c" text-anchor="start" dominant-baseline="central">10.</text>
+<text x="142.40" y="206.20" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="2.3" font-weight="normal" fill="#111111" text-anchor="start" dominant-baseline="central">Tutup kepala sekrup dengan dempul, amplas rata, bersihkan</text>
+<text x="142.40" y="209.60" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="2.3" font-weight="normal" fill="#111111" text-anchor="start" dominant-baseline="central">debu.</text>
+<text x="138.40" y="213.60" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="2.35" font-weight="bold" fill="#b4472c" text-anchor="start" dominant-baseline="central">11.</text>
+<text x="142.40" y="213.60" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="2.3" font-weight="normal" fill="#111111" text-anchor="start" dominant-baseline="central">Finishing 2–3 lapis vernis termasuk dasar alur. Pasang</text>
+<text x="142.40" y="217.00" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="2.3" font-weight="normal" fill="#111111" text-anchor="start" dominant-baseline="central">karet alas.</text>
+<text x="138.40" y="221.00" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="2.35" font-weight="bold" fill="#b4472c" text-anchor="start" dominant-baseline="central">12.</text>
+<text x="142.40" y="221.00" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="2.3" font-weight="normal" fill="#111111" text-anchor="start" dominant-baseline="central">Uji coba: masukkan piring ø235 pada alur tengah — puncaknya</text>
+<text x="142.40" y="224.40" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="2.3" font-weight="normal" fill="#111111" text-anchor="start" dominant-baseline="central">harus menempel dinding belakang.</text>
+<text x="16.00" y="248.00" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="3.2" font-weight="bold" fill="#111111" text-anchor="start" dominant-baseline="central">CATATAN PENTING</text>
+<text x="17.20" y="252.80" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="2.2" font-weight="normal" fill="#b4472c" text-anchor="start" dominant-baseline="central">•</text>
+<text x="19.40" y="252.80" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="2.2" font-weight="normal" fill="#111111" text-anchor="start" dominant-baseline="central">Piring kecil (ø147) WAJIB di alur tepi (2 paling kiri &amp; 2 paling kanan) agar tidak menabrak dinding samping.</text>
+<text x="17.20" y="256.20" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="2.2" font-weight="normal" fill="#b4472c" text-anchor="start" dominant-baseline="central">•</text>
+<text x="19.40" y="256.20" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="2.2" font-weight="normal" fill="#111111" text-anchor="start" dominant-baseline="central">Kapasitas dapat diubah: 16 alur tetap, tinggal atur jumlah piring tiap ukuran.</text>
+<text x="17.20" y="259.60" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="2.2" font-weight="normal" fill="#b4472c" text-anchor="start" dominant-baseline="central">•</text>
+<text x="19.40" y="259.60" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="2.2" font-weight="normal" fill="#111111" text-anchor="start" dominant-baseline="central">Hasil akhir: rak 600 × 800 × 450 mm berisi 16 piring + 12–20 gelas/mangkuk.</text>
+<rect x="246.00" y="248.00" width="162.00" height="41.00" fill="white" stroke="#1a1a1a" stroke-width="0.6"/>
+<line x1="246.00" y1="261.00" x2="408.00" y2="261.00" stroke="#1a1a1a" stroke-width="0.35" stroke-linecap="round"/>
+<line x1="246.00" y1="268.50" x2="408.00" y2="268.50" stroke="#c9c9c9" stroke-width="0.2" stroke-linecap="round"/>
+<line x1="246.00" y1="275.50" x2="408.00" y2="275.50" stroke="#c9c9c9" stroke-width="0.2" stroke-linecap="round"/>
+<line x1="342.00" y1="248.00" x2="342.00" y2="289.00" stroke="#c9c9c9" stroke-width="0.2" stroke-linecap="round"/>
+<text x="249.00" y="254.50" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="5.4" font-weight="bold" fill="#111111" text-anchor="start" dominant-baseline="central">PEMBUATAN</text>
+<text x="249.00" y="264.60" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="2.9" font-weight="normal" fill="#111111" text-anchor="start" dominant-baseline="central">Daftar potongan, bahan, perakitan</text>
+<text x="249.00" y="272.00" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="2.4" font-weight="normal" fill="#555" text-anchor="start" dominant-baseline="central">Satuan: mm</text>
+<text x="345.00" y="254.50" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="3.0" font-weight="bold" fill="#111111" text-anchor="start" dominant-baseline="central">SKALA 1 : 24</text>
+<text x="345.00" y="264.60" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="2.5" font-weight="normal" fill="#111111" text-anchor="start" dominant-baseline="central">TANGGAL  07-10-2026</text>
+<text x="345.00" y="272.00" font-family="DejaVu Sans, Arial, Helvetica, sans-serif" font-size="2.5" font-weight="normal" fill="#111111" text-anchor="start" dominant-baseline="central">LEMBAR  3 dari 3</text>
+</svg>
